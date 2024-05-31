@@ -1,4 +1,4 @@
-package ru.ermakov.myanime.presentation.theme
+package ru.ermakov.myanime.core.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

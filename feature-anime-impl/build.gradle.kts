@@ -1,19 +1,14 @@
 plugins {
-    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    alias(libs.plugins.ksp)
 }
 
 android {
-    namespace = "ru.ermakov.myanime"
+    namespace = "ru.ermakov.myanime.feature_anime_impl"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "ru.ermakov.myanime"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         vectorDrawables {
             useSupportLibrary = true
@@ -38,11 +33,6 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
     }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
 }
 
 dependencies {
@@ -58,11 +48,8 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    // Compose Navigation.
-    implementation(libs.androidx.navigation.compose)
-
-    // Coroutines.
-    implementation(libs.kotlinx.coroutines.android)
+    // Coil.
+    implementation(libs.coil.compose)
 
     // Koin.
     implementation(platform(libs.koin.bom))
@@ -72,11 +59,6 @@ dependencies {
     implementation(libs.retrofit2.retrofit)
     implementation(libs.retrofit2.converter.gson)
 
-    // Room.
-    implementation(libs.androidx.room.runtime)
-    ksp(libs.androidx.room.compiler)
-
     implementation(project(":core"))
     implementation(project(":feature-anime-api"))
-    implementation(project(":feature-anime-impl"))
 }

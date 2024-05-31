@@ -1,4 +1,4 @@
-package ru.ermakov.myanime.presentation.theme
+package ru.ermakov.myanime.core.presentation.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
