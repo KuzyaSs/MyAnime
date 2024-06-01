@@ -6,17 +6,17 @@ data class RemoteAnime(
     @SerializedName("mal_id")
     val id: Int,
     @SerializedName("url")
-    val url: String,
+    val url: String?,
     @SerializedName("images")
     val image: RemoteImage,
     @SerializedName("title")
-    val title: String,
+    val title: String?,
     @SerializedName("type")
-    val type: String,
+    val type: String?,
     @SerializedName("episodes")
     val episodes: Int,
     @SerializedName("score")
-    val score: Int,
+    val score: Double,
     @SerializedName("rank")
     val rank: Int,
     @SerializedName("popularity")
@@ -26,9 +26,9 @@ data class RemoteAnime(
     @SerializedName("favorites")
     val favorites: Int,
     @SerializedName("synopsis")
-    val synopsis: String,
+    val synopsis: String?,
     @SerializedName("background")
-    val background: String,
+    val background: String?,
     @SerializedName("year")
     val year: Int
 )

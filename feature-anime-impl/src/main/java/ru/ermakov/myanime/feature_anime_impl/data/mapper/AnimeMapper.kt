@@ -7,18 +7,18 @@ fun RemoteAnime.toAnime(): Anime {
     this.apply {
         return Anime(
             id = id,
-            url = url,
-            image = image.remoteJpg.imageUrl,
-            title = title,
-            type = type,
+            url = url ?: "",
+            image = image.remoteJpg.imageUrl ?: "",
+            title = title ?: "",
+            type = type ?: "",
             episodes = episodes,
             score = score,
             rank = rank,
             popularity = popularity,
             members = members,
             favorites = favorites,
-            synopsis = synopsis,
-            background = background,
+            synopsis = synopsis ?: "",
+            background = background ?: "",
             year = year
         )
     }

@@ -9,16 +9,20 @@ import ru.ermakov.myanime.feature_anime_api.domain.model.Anime
 
 class AnimeRemoteDataSourceImpl(private val animeApi: AnimeApi) : AnimeRemoteDataSource {
     override suspend fun getAnime(page: Int, searchQuery: String): Result<List<Anime>, RootError> {
-        val animeResponse = animeApi.getAnime(page = page, searchQuery = searchQuery)
-        if (animeResponse.isSuccessful) {
-            animeResponse.body()?.let { data ->
-                return Result.Success(
-                    data = data.remoteAnimeList.map { remoteAnime ->
-                        remoteAnime.toAnime()
-                    }
-                )
+        try {
+            val animeResponse = animeApi.getAnime(page = page, searchQuery = searchQuery)
+            if (animeResponse.isSuccessful) {
+                animeResponse.body()?.let { data ->
+                    return Result.Success(
+                        data = data.remoteAnimeList.map { remoteAnime ->
+                            remoteAnime.toAnime()
+                        }
+                    )
+                }
             }
+            return Result.Error(error = CoreError.CONNECTION_FAILURE)
+        } catch (exception: Exception) {
+            return Result.Error(error = CoreError.CONNECTION_FAILURE)
         }
-        return Result.Error(error = CoreError.CONNECTION_FAILURE)
     }
 }

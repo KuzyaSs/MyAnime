@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class RemoteJpg(
     @SerializedName("image_url")
-    val imageUrl: String,
+    val imageUrl: String?,
 )

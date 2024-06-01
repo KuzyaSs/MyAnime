@@ -6,7 +6,8 @@ import ru.ermakov.myanime.feature_anime_api.domain.model.Anime
 data class AnimeListState(
     val animeList: List<Anime> = emptyList(),
     val searchQuery: String = "",
-    val isSearchMode: Boolean = false,
+    val animePage: Int = 0,
+    val isRefreshing: Boolean = false,
     val isLoading: Boolean = false,
     val isError: Boolean = false,
     val error: RootError? = null

@@ -7,7 +7,7 @@ data class Anime(
     val title: String,
     val type: String,
     val episodes: Int,
-    val score: Int,
+    val score: Double,
     val rank: Int,
     val popularity: Int,
     val members: Int,

@@ -51,9 +51,13 @@ dependencies {
     // Coil.
     implementation(libs.coil.compose)
 
+    // Compose Navigation.
+    implementation(libs.androidx.navigation.compose)
+
     // Koin.
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.android)
+    implementation(libs.koin.compose)
 
     // Retrofit.
     implementation(libs.retrofit2.retrofit)
