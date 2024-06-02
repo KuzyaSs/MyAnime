@@ -1,4 +1,4 @@
-package ru.ermakov.myanime.feature_anime_impl.presentation.components.animeList
+package ru.ermakov.myanime.feature_anime_impl.presentation.screen.animeList
 
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue

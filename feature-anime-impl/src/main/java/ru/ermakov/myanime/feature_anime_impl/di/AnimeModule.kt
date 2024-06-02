@@ -8,7 +8,8 @@ import ru.ermakov.myanime.feature_anime_impl.data.remote.api.AnimeApi
 import ru.ermakov.myanime.feature_anime_impl.data.remote.data_source.AnimeRemoteDataSource
 import ru.ermakov.myanime.feature_anime_impl.data.remote.data_source.AnimeRemoteDataSourceImpl
 import ru.ermakov.myanime.feature_anime_impl.data.repository.AnimeRepositoryImpl
-import ru.ermakov.myanime.feature_anime_impl.presentation.components.animeList.AnimeListViewModel
+import ru.ermakov.myanime.feature_anime_impl.presentation.screen.animeDetails.AnimeDetailsViewModel
+import ru.ermakov.myanime.feature_anime_impl.presentation.screen.animeList.AnimeListViewModel
 
 val animeModule = module {
     single<AnimeApi> {
@@ -25,5 +26,9 @@ val animeModule = module {
 
     viewModel<AnimeListViewModel> {
         AnimeListViewModel(get())
+    }
+
+    viewModel<AnimeDetailsViewModel> {
+        AnimeDetailsViewModel(get())
     }
 }

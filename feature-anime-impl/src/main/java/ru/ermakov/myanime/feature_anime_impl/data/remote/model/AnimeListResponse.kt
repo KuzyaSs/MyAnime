@@ -2,7 +2,7 @@ package ru.ermakov.myanime.feature_anime_impl.data.remote.model
 
 import com.google.gson.annotations.SerializedName
 
-data class AnimeResponse(
+data class AnimeListResponse(
     @SerializedName("data")
-    val remoteAnime: RemoteAnime,
+    val remoteAnimeList: List<RemoteAnime>,
 )

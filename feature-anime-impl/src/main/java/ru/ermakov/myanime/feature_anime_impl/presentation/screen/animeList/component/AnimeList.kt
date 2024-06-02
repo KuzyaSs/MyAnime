@@ -1,4 +1,4 @@
-package ru.ermakov.myanime.feature_anime_impl.presentation.components.animeList.components
+package ru.ermakov.myanime.feature_anime_impl.presentation.screen.animeList.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -11,62 +11,38 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.pulltorefresh.PullToRefreshState
-import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.tooling.preview.Preview
 import ru.ermakov.myanime.core.presentation.theme.MyAnimeTheme
 import ru.ermakov.myanime.core.presentation.theme.spacing
 import ru.ermakov.myanime.feature_anime_api.domain.model.Anime
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PullToRefreshAnimeList(
+fun AnimeList(
     animeList: List<Anime>,
-    pullToRefreshState: PullToRefreshState,
     isLoading: Boolean,
-    isRefreshing: Boolean,
-    onRefresh: () -> Unit,
     loadNextAnime: () -> Unit,
     onItemClicked: (id: Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
-
-    Box(modifier = Modifier.nestedScroll(pullToRefreshState.nestedScrollConnection)) {
-        LazyColumn(
-            contentPadding = PaddingValues(MaterialTheme.spacing.medium),
-            verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small),
-            modifier = modifier.fillMaxSize()
-        ) {
-            itemsIndexed(animeList) { index, anime ->
-                if (index == animeList.size - 1 && !isLoading) {
-                    loadNextAnime()
-                }
-                AnimeItem(anime = anime, onItemClicked = { id -> onItemClicked(id) })
+    LazyColumn(
+        contentPadding = PaddingValues(MaterialTheme.spacing.medium),
+        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.medium),
+        modifier = modifier.fillMaxSize()
+    ) {
+        itemsIndexed(animeList) { index, anime ->
+            if (index == animeList.size - 1 && !isLoading) {
+                loadNextAnime()
             }
-            item {
-                if (isLoading) {
-                    Box(modifier = Modifier.fillMaxWidth()) {
-                        CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-                    }
-                }
-            }
+            AnimeItem(anime = anime, onItemClicked = { id -> onItemClicked(id) })
         }
-
-        if (pullToRefreshState.isRefreshing) {
-            LaunchedEffect(true) {
-                onRefresh()
-            }
-        }
-        LaunchedEffect(isRefreshing) {
-            if (isRefreshing) {
-                pullToRefreshState.startRefresh()
-            } else {
-                pullToRefreshState.endRefresh()
+        item {
+            if (isLoading) {
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+                }
             }
         }
     }
@@ -78,7 +54,7 @@ fun PullToRefreshAnimeList(
 fun AnimeListPreview() {
     MyAnimeTheme {
         Surface(color = MaterialTheme.colorScheme.background) {
-            PullToRefreshAnimeList(
+            AnimeList(
                 animeList = buildList {
                     repeat(1) {
                         add(
@@ -101,10 +77,7 @@ fun AnimeListPreview() {
                         )
                     }
                 },
-                pullToRefreshState = rememberPullToRefreshState(),
                 isLoading = true,
-                isRefreshing = false,
-                onRefresh = {},
                 loadNextAnime = {},
                 onItemClicked = {}
             )

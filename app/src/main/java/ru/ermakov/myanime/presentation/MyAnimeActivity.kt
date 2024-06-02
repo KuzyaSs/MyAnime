@@ -11,13 +11,10 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import ru.ermakov.myanime.app.MyAnimeApplication
 import ru.ermakov.myanime.core.presentation.navigation.Destination
 import ru.ermakov.myanime.core.presentation.theme.MyAnimeTheme
-import ru.ermakov.myanime.feature_anime_impl.presentation.components.animeList.AnimeListScreen
-import ru.ermakov.myanime.feature_anime_impl.presentation.components.animeList.AnimeListState
-import ru.ermakov.myanime.feature_anime_impl.presentation.components.animeList.AnimeListViewModel
-import ru.ermakov.myanime.feature_anime_impl.presentation.components.animeList.animeListDestination
+import ru.ermakov.myanime.feature_anime_impl.presentation.screen.animeDetails.animeDetailsDestination
+import ru.ermakov.myanime.feature_anime_impl.presentation.screen.animeList.animeListDestination
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +39,7 @@ class MainActivity : ComponentActivity() {
             startDestination = Destination.AnimeList.name
         ) {
             animeListDestination(navController = navController)
+            animeDetailsDestination(navController = navController)
         }
     }
 }

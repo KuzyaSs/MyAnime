@@ -1,6 +1,5 @@
-package ru.ermakov.myanime.feature_anime_impl.presentation.components.animeList
+package ru.ermakov.myanime.feature_anime_impl.presentation.screen.animeList
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
@@ -14,7 +13,6 @@ import kotlinx.coroutines.launch
 import ru.ermakov.myanime.core.domain.model.Result
 import ru.ermakov.myanime.feature_anime_api.domain.repository.AnimeRepository
 
-private const val DEFAULT_ANIME_PAGE = 0
 private const val GET_ANIME_DELAY = 1500L
 
 class AnimeListViewModel(private val animeRepository: AnimeRepository) : ViewModel() {
@@ -24,26 +22,19 @@ class AnimeListViewModel(private val animeRepository: AnimeRepository) : ViewMod
     private var getAnimeJob: Job? = null
 
     init {
-        getAnime()
+        getAnimeList()
     }
 
     fun obtainEvent(event: AnimeListEvent) {
         when (event) {
-            is AnimeListEvent.LoadNextAnime -> {
-                getAnime()
-            }
-
-            is AnimeListEvent.RefreshAnime -> {
-                refreshAnime()
-            }
-
-            is AnimeListEvent.SearchAnime -> {
-                searchAnime(searchQuery = event.searchQuery)
-            }
+            is AnimeListEvent.LoadNextAnimeList -> getAnimeList()
+            is AnimeListEvent.Retry -> getAnimeList()
+            is AnimeListEvent.RefreshAnimeList -> refreshAnimeList()
+            is AnimeListEvent.SearchAnime -> searchAnime(searchQuery = event.searchQuery)
         }
     }
 
-    private fun getAnime() {
+    private fun getAnimeList() {
         if (_state.value.isLoading) {
             return
         }
@@ -52,7 +43,7 @@ class AnimeListViewModel(private val animeRepository: AnimeRepository) : ViewMod
         _state.update { it.copy(isLoading = true, isError = false, error = null) }
         getAnimeJob = viewModelScope.launch(Dispatchers.IO) {
             delay(GET_ANIME_DELAY)
-            val animeResult = animeRepository.getAnime(
+            val animeResult = animeRepository.getAnimeList(
                 page = _state.value.animePage.inc(),
                 searchQuery = _state.value.searchQuery
             )
@@ -82,7 +73,7 @@ class AnimeListViewModel(private val animeRepository: AnimeRepository) : ViewMod
         }
     }
 
-    private fun refreshAnime() {
+    private fun refreshAnimeList() {
         _state.update {
             it.copy(
                 animeList = emptyList(),
@@ -90,7 +81,7 @@ class AnimeListViewModel(private val animeRepository: AnimeRepository) : ViewMod
                 isRefreshing = true
             )
         }
-        getAnime()
+        getAnimeList()
     }
 
     private fun searchAnime(searchQuery: String) {
@@ -101,6 +92,6 @@ class AnimeListViewModel(private val animeRepository: AnimeRepository) : ViewMod
                 animePage = DEFAULT_ANIME_PAGE
             )
         }
-        getAnime()
+        getAnimeList()
     }
 }

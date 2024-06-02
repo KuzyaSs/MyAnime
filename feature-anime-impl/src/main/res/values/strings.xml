@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="type">Type</string>
+    <string name="episodes">Episodes</string>
+    <string name="year">Year</string>
+    <string name="rank">Rank</string>
+    <string name="popularity">Popularity</string>
+    <string name="members">Members</string>
+    <string name="favorites">Favorites</string>
+</resources>

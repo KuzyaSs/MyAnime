@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">MyAnime</string>
     <string name="search">Search</string>
+    <string name="retry">Retry</string>
+    <string name="nothing_found">Nothing found</string>
+    <string name="connection_failure">Connection failure</string>
 </resources>
