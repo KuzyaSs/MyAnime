@@ -26,13 +26,11 @@ import coil.compose.SubcomposeAsyncImage
 import ru.ermakov.myanime.core.presentation.theme.MyAnimeTheme
 import ru.ermakov.myanime.core.presentation.theme.spacing
 import ru.ermakov.myanime.feature_anime_api.domain.model.Anime
-import ru.ermakov.myanime.feature_anime_impl.R
-import ru.ermakov.myanime.feature_anime_impl.presentation.screen.animeDetails.AnimeDetailsEvent
+import ru.ermakov.myanime.feature_anime_api.R
 
 @Composable
 fun SuccessfulAnimeDetailsScreen(
     anime: Anime,
-    onEvent: (AnimeDetailsEvent) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -57,6 +55,7 @@ fun SuccessfulAnimeDetailsScreen(
         )
         Text(
             text = anime.title,
+            textAlign = TextAlign.Center,
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(bottom = MaterialTheme.spacing.medium)
@@ -121,7 +120,6 @@ fun SuccessfulAnimeDetailsScreenPreview() {
                     background = "",
                     year = 2004
                 ),
-                onEvent = {},
                 modifier = Modifier.padding(all = MaterialTheme.spacing.medium)
             )
         }

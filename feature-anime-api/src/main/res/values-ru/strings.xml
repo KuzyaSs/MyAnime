@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="local_anime_not_found">Аниме не найдено (Автономный режим)</string>
+    <string name="type">Тип</string>
+    <string name="episodes">Эпизоды</string>
+    <string name="year">Год</string>
+    <string name="rank">Ранг</string>
+    <string name="popularity">Популярность</string>
+    <string name="members">Сообщество</string>
+    <string name="favorites">Отслеживающих</string>
+</resources>

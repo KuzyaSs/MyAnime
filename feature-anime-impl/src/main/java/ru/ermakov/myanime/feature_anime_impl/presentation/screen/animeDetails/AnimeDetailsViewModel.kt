@@ -3,7 +3,6 @@ package ru.ermakov.myanime.feature_anime_impl.presentation.screen.animeDetails
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -36,7 +35,6 @@ class AnimeDetailsViewModel(private val animeRepository: AnimeRepository) : View
             )
         }
         viewModelScope.launch(Dispatchers.IO) {
-            delay(2000)
             when (val animeResult = animeRepository.getAnimeById(animeId = animeId)) {
                 is Result.Success -> {
                     _state.update { it.copy(anime = animeResult.data, isLoading = false) }

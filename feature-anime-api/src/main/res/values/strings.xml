@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="local_anime_not_found">Anime not found (Offline mode)</string>
     <string name="type">Type</string>
     <string name="episodes">Episodes</string>
     <string name="year">Year</string>

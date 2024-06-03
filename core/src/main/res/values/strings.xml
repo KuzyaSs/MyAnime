@@ -4,4 +4,5 @@
     <string name="retry">Retry</string>
     <string name="nothing_found">Nothing found</string>
     <string name="connection_failure">Connection failure</string>
+    <string name="read_write_error">Read / Write error</string>
 </resources>

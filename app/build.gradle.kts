@@ -77,6 +77,7 @@ dependencies {
     ksp(libs.androidx.room.compiler)
 
     implementation(project(":core"))
+    implementation(project(":database"))
     implementation(project(":feature-anime-api"))
     implementation(project(":feature-anime-impl"))
 }

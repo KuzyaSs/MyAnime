@@ -74,8 +74,7 @@ fun AnimeDetailsScreen(
 
             (state.anime != null) -> {
                 SuccessfulAnimeDetailsScreen(
-                    anime = state.anime,
-                    onEvent = { event -> onEvent(event) }
+                    anime = state.anime
                 )
             }
         }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyAnime</string>
+    <string name="search">Поиск</string>
+    <string name="retry">Повторить</string>
+    <string name="nothing_found">Ничего не найдено</string>
+    <string name="connection_failure">Ошибка соединения</string>
+    <string name="read_write_error">Ошибка чтения / записи</string>
+</resources>

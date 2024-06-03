@@ -22,5 +22,6 @@ dependencyResolutionManagement {
 rootProject.name = "MyAnime"
 include(":app")
 include(":core")
+include(":database")
 include(":feature-anime-api")
 include(":feature-anime-impl")

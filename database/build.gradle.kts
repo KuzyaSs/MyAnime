@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.ermakov.myanime.feature_anime_api"
+    namespace = "ru.ermakov.myanime.database"
     compileSdk = 34
 
     defaultConfig {
@@ -27,10 +27,14 @@ android {
 }
 
 dependencies {
+    // Koin.
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.android)
+
     // Room.
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
 
-    implementation(project(":core"))
+    implementation(project(":feature-anime-api"))
 }
